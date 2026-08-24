@@ -12,19 +12,26 @@ public abstract class Entidade {
     private int velocidade;
     private int armadura;
 
+    private double dinheiro;
+
     public Entidade(String nome, int nivel, int mana, int vida, int forca,
                     int inteligencia, int poderMagico, int velocidade, int armadura) {
-        if (nivel <= 0 )throw new IllegalArgumentException("Nivel inválido");
+        if (nivel <= 0 ) throw new IllegalArgumentException("Nivel inválido");
 
         if (mana <= 0) throw new IllegalArgumentException("Mana inválida");
 
-        if (forca <= 0)throw new IllegalArgumentException("Força inválida");
+        if (forca <= 0) throw new IllegalArgumentException("Força inválida");
 
-        if (inteligencia <= 0)throw new IllegalArgumentException("Inteligência inválida");
+        if (inteligencia <= 0) throw new IllegalArgumentException("Inteligência inválida");
 
-        if (poderMagico < 0)throw new IllegalArgumentException("Poder mágico inválido");
+        if (poderMagico < 0) throw new IllegalArgumentException("Poder mágico inválido");
 
         if (velocidade <= 0 )throw new IllegalArgumentException("Velocidade inválida");
+
+        if (vida <= 0)throw new IllegalArgumentException("Vida inválida");
+
+        if (armadura <= 0)throw new IllegalArgumentException("Armadura inválida");
+
 
         this.nome = Objects.requireNonNull(nome);
         this.nivel = nivel;
@@ -35,9 +42,13 @@ public abstract class Entidade {
         this.poderMagico = poderMagico;
         this.velocidade = velocidade;
         this.armadura = armadura;
+
+        this.dinheiro = 0;
     }
 
-    public abstract int atacar();
+    public int atacar(){
+        return forca;
+    }
 
     public void receberDano(int dano){
 
@@ -48,8 +59,6 @@ public abstract class Entidade {
         }
 
         this.vida -= danoFinal;
-
-
     }
 
     public void receberDanoVerdadeiro(int dano){
@@ -96,5 +105,66 @@ public abstract class Entidade {
         return velocidade;
     }
 
+    public double getDinheiro() {
+        return dinheiro;
+    }
+
     //----------//
+
+
+    public void setNivel(int nivel) {
+        this.nivel = nivel;
+    }
+
+    public void setMana(int mana) {
+        if (mana <= 0) throw new IllegalArgumentException("Mana inválida");
+
+
+        this.mana = mana;
+    }
+
+    public void setVida(int vida) {
+        if (vida <= 0 )throw new IllegalArgumentException("vida inválida");
+
+        this.vida = vida;
+    }
+
+    public void setForca(int forca) {
+        if (forca <= 0 )throw new IllegalArgumentException("Força inválida");
+
+
+        this.forca = forca;
+    }
+
+    public void setInteligencia(int inteligencia) {
+        if (inteligencia <= 0 )throw new IllegalArgumentException("Inteligência inválida");
+
+
+        this.inteligencia = inteligencia;
+    }
+
+    public void setPoderMagico(int poderMagico) {
+        if (poderMagico <= 0 )throw new IllegalArgumentException("Poder Magico inválida");
+
+
+        this.poderMagico = poderMagico;
+    }
+
+    public void setVelocidade(int velocidade) {
+        if (velocidade <= 0 )throw new IllegalArgumentException("Velocidade inválida");
+
+
+        this.velocidade = velocidade;
+    }
+
+    public void setArmadura(int armadura) {
+        if (armadura <= 0 )throw new IllegalArgumentException("Armadura inválida");
+
+
+        this.armadura = armadura;
+    }
+
+    public void setDinheiro(double dinheiro) {
+        this.dinheiro = dinheiro;
+    }
 }

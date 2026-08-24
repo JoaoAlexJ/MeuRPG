@@ -10,14 +10,25 @@ public abstract class Alvos extends Entidade{
         super(nome, nivel, mana, vida, forca, inteligencia, poderMagico, velocidade, armadura);
 
         this.items = new ArrayList<>();
+        setDinheiro(calcularDinheiro());
     }
 
-    public abstract int reconpensa();
+    public int recompensaXP(){
+        return getNivel() * 85;
+    }
+
+    public double recompensaDinheiro(){
+        double recompensa = getDinheiro();
+        setDinheiro(0);
+
+        return recompensa;
+    }
 
     public void addDropItem(DropItem dropItem){
         items.add(dropItem);
 
     }
+
 
     protected List<Item> gerarDropItems(){
 
@@ -36,6 +47,14 @@ public abstract class Alvos extends Entidade{
         return itemsGerados;
 
     }
+
+    public double calcularDinheiro(){
+
+        return 20 * getNivel();
+
+    }
+
+
 
 
 }
