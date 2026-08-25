@@ -2,6 +2,7 @@ package Entidade.Jogador;
 
 import Entidade.Entidade;
 import Entidade.Classe;
+import Habilidade.Habilidade;
 
 public class Jogador extends Entidade {
 
@@ -75,4 +76,15 @@ public class Jogador extends Entidade {
     }
 
 
+    @Override
+    public boolean podeAddHabilidade(Habilidade habilidade) {
+        if (habilidade.getRequisitoClasse() == null && habilidade.getRequisitoMonstro() == null){
+            return true;
+        }
+        else if (habilidade.getRequisitoClasse() == this.classe && habilidade.getRequisitoMonstro() == null){
+            return true;
+
+        }
+        else return false;
+    }
 }

@@ -69,7 +69,6 @@ public enum Raca {
         }
     },
 
-    //-----------------//
 
     GOBLIM{
         @Override
@@ -80,43 +79,9 @@ public enum Raca {
             entidade.setPoderMagico(entidade.getPoderMagico() + 15);
 
         }
-    },
-
-    DRAGAO{
-        @Override
-        public void bonusAtributo(Entidade entidade) {
-
-            entidade.setArmadura(entidade.getArmadura() + 25);
-            entidade.setPoderMagico(entidade.getPoderMagico() + 45);
-            entidade.setForca(entidade.getForca() + 25);
-            entidade.setVida(entidade.getVida() + 300);
-
-
-        }
-    },
-
-    ARACNIDEO{
-        @Override
-        public void bonusAtributo(Entidade entidade) {
-            entidade.setInteligencia(entidade.getInteligencia() + 25);
-            entidade.setPoderMagico(entidade.getPoderMagico() + 15);
-            entidade.setVelocidade(entidade.getVelocidade() + 5);
-
-
-        }
-    },
-
-    GOLEM{
-        @Override
-        public void bonusAtributo(Entidade entidade) {
-
-            entidade.setArmadura(entidade.getArmadura() + 25);
-            entidade.setVida(entidade.getVida() + 350);
-            entidade.setPoderMagico(entidade.getPoderMagico() + 20);
-
-
-        }
     };
+
+    //-----------------//
 
     public abstract void bonusAtributo(Entidade entidade);
 

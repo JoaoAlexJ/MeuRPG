@@ -1,5 +1,9 @@
 package Entidade;
 
+import Habilidade.Habilidade;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public abstract class Entidade {
@@ -15,6 +19,8 @@ public abstract class Entidade {
     private int armadura;
 
     private double dinheiro;
+    private List<Habilidade> habilidadesEquipadas;
+    private List<Habilidade> habilidadesAprendidas;
 
     public Entidade(String nome, int nivel, int mana, int vida, int forca,
                     int inteligencia, int poderMagico, int velocidade, int armadura) {
@@ -46,6 +52,9 @@ public abstract class Entidade {
         this.armadura = armadura;
 
         this.dinheiro = 0;
+
+        this.habilidadesEquipadas = new ArrayList<>();
+        this.habilidadesAprendidas = new ArrayList<>();
     }
 
     public int atacar(){
@@ -76,8 +85,39 @@ public abstract class Entidade {
         return this.vida > 0;
     }
 
+    public abstract boolean podeAddHabilidade(Habilidade habilidade);
+
+    public void aprenderHabilidade(Habilidade habilidade){
+        if (!podeAddHabilidade(habilidade)){
+            throw new RuntimeException("A entidade não pode aprender essa habilidade");
+        }
+
+        habilidadesAprendidas.add(habilidade);
+    }
+
+    public void equiparHabilidade(String nomeHabilidade){
+
+        if (habilidadesEquipadas.size() == 5){
+            throw new RuntimeException("Limite de habilidades equipadas atingido");
+        }
+
+        Habilidade hab = habilidadesAprendidas.stream()
+                        .filter(h -> h.getNome().equalsIgnoreCase(nomeHabilidade))
+                .findFirst().orElseThrow(() -> new RuntimeException("Habilidade não encontrada."));
+
+
+        habilidadesEquipadas.add(hab);
+    }
     //----------------------------------//
 
+
+    public List<Habilidade> getHabilidadesAprendidas() {
+        return new ArrayList<>(habilidadesAprendidas);
+    }
+
+    public List<Habilidade> getHabilidadesEquipadas() {
+        return new ArrayList<>(habilidadesEquipadas);
+    }
 
     public int getVida() {
         return vida;
