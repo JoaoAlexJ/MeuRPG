@@ -1,3 +1,7 @@
+package Entidade;
+
+import Entidade.Jogador.Raca;
+
 import java.util.ArrayList;
 import java.util.List;
 

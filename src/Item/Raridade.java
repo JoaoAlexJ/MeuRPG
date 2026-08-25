@@ -1,5 +1,6 @@
-public enum Raridade {
+package Item;
 
+public enum Raridade {
 
     COMUM,
     INCOMUM,

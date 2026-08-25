@@ -1,3 +1,5 @@
+package Entidade;
+
 import java.util.Objects;
 
 public abstract class Entidade {
@@ -77,6 +79,10 @@ public abstract class Entidade {
     //----------------------------------//
 
 
+    public int getVida() {
+        return vida;
+    }
+
     public String getNome() {
         return nome;
     }
@@ -107,6 +113,10 @@ public abstract class Entidade {
 
     public double getDinheiro() {
         return dinheiro;
+    }
+
+    public int getArmadura() {
+        return armadura;
     }
 
     //----------//

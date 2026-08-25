@@ -1,24 +1,26 @@
-import java.awt.event.ItemEvent;
+package Entidade.Jogador;
+
+import Item.Item;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class Inventario {
 
-    private List<String> items;
+    private List<Item> items;
 
     public Inventario() {
         this.items = new ArrayList<>();
     }
 
-    public void adicionarItem(String item){
+    public void adicionarItem(Item item){
 
-        if (item == null || item.isBlank())throw new IllegalArgumentException("Item inválido");
+        if (item == null)throw new IllegalArgumentException("Item inválido");
 
         items.add(item);
     }
 
-    public String removerItem(String item){
+    public Item removerItem(Item item){
 
         if (items.contains(item)){
             items.remove(item);
@@ -28,7 +30,7 @@ public class Inventario {
         else return null;
     }
 
-    public List<String> getItems() {
+    public List<Item> getItems() {
         return new ArrayList<>(items);
     }
 }
