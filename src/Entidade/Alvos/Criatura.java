@@ -27,6 +27,8 @@ public class Criatura extends Alvos{
 
         this.raca = raca;
         this.classe = classe;
+
+        this.raca.bonusAtributo(this);
         calcularCriacao();
     }
 
@@ -34,6 +36,8 @@ public class Criatura extends Alvos{
         super(nome, nivel,  MANA_BASE, VIDA_BASE, FORCA_BASE, INTELIGENCIA_BASE, PODER_MAGICO_BASE, VELOCIDADE_BASE, ARMADURA_BASE, items);
 
         this.raca = raca;
+
+        this.raca.bonusAtributo(this);
         calcularCriacao();
     }
 

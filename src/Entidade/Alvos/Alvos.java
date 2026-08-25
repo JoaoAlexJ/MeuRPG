@@ -38,7 +38,7 @@ public abstract class Alvos extends Entidade {
     }
 
 
-    protected List<Item> gerarDropItems(){
+    public List<Item> gerarDropItems(){
 
         Random random = new Random();
         List<Item> itemsGerados = new ArrayList<>();
