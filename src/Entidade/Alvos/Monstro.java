@@ -37,6 +37,27 @@ public class Monstro extends Alvos{
     }
 
     @Override
+    public int usarHabilidade(Habilidade habilidade) {
+        if (!getHabilidadesEquipadas().contains(habilidade)){
+
+            throw new RuntimeException("Essa habilidade não está equipada");
+        }
+
+
+        if (tipoMonstro.equals(TipoMonstro.DRAGAO)){
+            return (int)(habilidade.getDano() + getPoderMagico() * 0.85 + getForca() * 0.20);
+
+        }else if (tipoMonstro.equals(TipoMonstro.ARACNIDEO)){
+            return (int)(habilidade.getDano() + getInteligencia() * 0.85 + getPoderMagico() * 0.15 + getForca() * 0.15);
+
+        }else if (tipoMonstro.equals(TipoMonstro.GOLEM)){
+            return (int)(habilidade.getDano() + getForca() + getPoderMagico() * 0.85);
+        }
+
+        return 0;
+    }
+
+    @Override
     public boolean podeAddHabilidade(Habilidade habilidade) {
         if (habilidade.getRequisitoMonstro() == null && habilidade.getRequisitoClasse() == null){
             return true;

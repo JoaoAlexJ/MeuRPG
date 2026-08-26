@@ -15,7 +15,7 @@ public class Habilidade {
     private TipoMonstro requisitoMonstro;
     private TipoHabilidade tipoHabilidade;
 
-    public Habilidade(String nome, int dano, int custoMana, Raridade raridade, TipoMonstro requisitoMonstro, TipoHabilidade tipoHabilidade ) {
+    public Habilidade(String nome, int dano, int custoMana, Raridade raridade, TipoHabilidade tipoHabilidade, TipoMonstro requisitoMonstro ) {
 
         this.nome = nome;
         this.dano = dano;
@@ -26,12 +26,21 @@ public class Habilidade {
 
     }
 
-    public Habilidade(String nome, int dano, int custoMana, Raridade raridade, Classe requisitoClasse ) {
+    public Habilidade(String nome, int dano, int custoMana, Raridade raridade, TipoHabilidade tipoHabilidade, Classe requisitoClasse ) {
         this.nome = nome;
         this.dano = dano;
         this.custoMana = custoMana;
         this.raridade = raridade;
         this.requisitoClasse = requisitoClasse;
+        this.tipoHabilidade = tipoHabilidade;
+    }
+
+    public Habilidade(String nome, int dano, int custoMana, Raridade raridade, TipoHabilidade tipoHabilidade) {
+        this.nome = nome;
+        this.dano = dano;
+        this.custoMana = custoMana;
+        this.raridade = raridade;
+        this.tipoHabilidade = tipoHabilidade;
     }
 
 

@@ -1,12 +1,19 @@
 package Item;
 
+import java.util.Objects;
+
 public class DropItem {
 
     private Item item;
     private int chance;
 
     public DropItem(Item item, int chance) {
-        this.item = item;
+
+        if(chance <= 0){
+            throw new IllegalArgumentException("Chance inválida");
+        }
+
+        this.item = Objects.requireNonNull(item);
         this.chance = chance;
     }
 

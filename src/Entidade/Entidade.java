@@ -61,9 +61,11 @@ public abstract class Entidade {
         return forca;
     }
 
+    public abstract int usarHabilidade(Habilidade habilidade);
+
     public void receberDano(int dano){
 
-        int danoFinal = this.armadura - dano;
+        int danoFinal = dano - this.armadura;
 
         if (danoFinal <= 4 ){
             danoFinal = 5;

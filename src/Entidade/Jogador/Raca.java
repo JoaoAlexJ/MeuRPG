@@ -33,7 +33,7 @@ public enum Raca {
         @Override
         public void bonusAtributo(Entidade entidade) {
 
-            entidade.setInteligencia(entidade.getInteligencia() +30);
+            entidade.setInteligencia(entidade.getInteligencia() +20);
             entidade.setArmadura(entidade.getArmadura() +20);
             entidade.setForca(entidade.getForca() +15);
 
@@ -53,8 +53,8 @@ public enum Raca {
         public void bonusAtributo(Entidade entidade) {
 
             entidade.setVida(entidade.getVida() +200);
-            entidade.setArmadura(entidade.getArmadura() +30);
-            entidade.setForca(entidade.getForca() +20);
+            entidade.setArmadura(entidade.getArmadura() +20);
+            entidade.setForca(entidade.getForca() +15);
 
         }
     },
@@ -62,9 +62,9 @@ public enum Raca {
         @Override
         public void bonusAtributo(Entidade entidade) {
 
-            entidade.setMana(entidade.getMana() +220);
-            entidade.setInteligencia(entidade.getInteligencia() +40);
-            entidade.setPoderMagico(entidade.getPoderMagico() +25);
+            entidade.setMana(entidade.getMana() +150);
+            entidade.setInteligencia(entidade.getInteligencia() +15);
+            entidade.setPoderMagico(entidade.getPoderMagico() + 20);
 
         }
     },
@@ -74,9 +74,9 @@ public enum Raca {
         @Override
         public void bonusAtributo(Entidade entidade) {
 
-            entidade.setVelocidade(entidade.getVelocidade() +15);
-            entidade.setForca(entidade.getForca() +15);
-            entidade.setPoderMagico(entidade.getPoderMagico() + 15);
+            entidade.setVelocidade(entidade.getVelocidade() +5);
+            entidade.setForca(entidade.getForca() +5);
+            entidade.setPoderMagico(entidade.getPoderMagico() + 5);
 
         }
     };

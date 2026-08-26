@@ -45,7 +45,7 @@ public abstract class Alvos extends Entidade {
 
         for (DropItem d : items){
 
-            if (random.nextInt(100 + 1) <= d.getChance()){
+            if (random.nextInt(100) <= d.getChance()){
 
                 itemsGerados.add(d.getItem());
             }
@@ -66,7 +66,7 @@ public abstract class Alvos extends Entidade {
         setVelocidade(getVelocidade() * getNivel());
         setArmadura(getArmadura() * getNivel());
         setForca(getForca() * getNivel());
-        setMana(getMana() * getMana());
+        setMana(getMana() * getNivel());
         setInteligencia( getInteligencia() * getNivel());
         setVida(getVida() * getNivel());
         setPoderMagico(getPoderMagico() * getNivel());

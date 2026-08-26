@@ -21,7 +21,7 @@ public class Criatura extends Alvos{
     private static final int ARMADURA_BASE = 7;
 
 
-    public Criatura(String nome, int nivel, Raca raca, Classe classe, List<DropItem> items) {
+    public Criatura(String nome, int nivel, Raca raca, List<DropItem> items, Classe classe) {
         super(nome, nivel, MANA_BASE, VIDA_BASE, FORCA_BASE, INTELIGENCIA_BASE, PODER_MAGICO_BASE, VELOCIDADE_BASE, ARMADURA_BASE, items);
 
 
@@ -29,6 +29,7 @@ public class Criatura extends Alvos{
         this.classe = classe;
 
         this.raca.bonusAtributo(this);
+        this.classe.bonusClasse(this);
         calcularCriacao();
     }
 
@@ -52,6 +53,29 @@ public class Criatura extends Alvos{
 
     //------------------//
 
+
+    @Override
+    public int usarHabilidade(Habilidade habilidade) {
+        if (!getHabilidadesEquipadas().contains(habilidade)){
+
+            throw new RuntimeException("Essa habilidade não está equipada");
+        }
+
+        if (classe.equals(Classe.MAGO)){
+            return (int)(habilidade.getDano() + getPoderMagico() * 0.85 + getInteligencia());
+
+        } else if (classe.equals(Classe.ARQUEIRO)) {
+            return (int)(habilidade.getDano() + getForca() * 0.40 + getInteligencia() * 0.40 + getVelocidade() * 0.10);
+
+        } else if (classe.equals(Classe.ASSASINO)) {
+            return (int)(habilidade.getDano() + getForca() * 0.85 +getVelocidade() * 0.05 );
+
+        } else if (classe.equals(Classe.GUERREIRO)) {
+            return (int)(habilidade.getDano() + getForca() + getArmadura() * 0.38);
+        }
+
+        else return (int) (habilidade.getDano() + getForca() * 0.20);
+    }
 
     @Override
     public boolean podeAddHabilidade(Habilidade habilidade) {
