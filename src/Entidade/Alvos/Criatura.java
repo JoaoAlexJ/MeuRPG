@@ -61,6 +61,8 @@ public class Criatura extends Alvos{
             throw new RuntimeException("Essa habilidade não está equipada");
         }
 
+        gastarMana(habilidade.getCustoMana());
+
         if (classe.equals(Classe.MAGO)){
             return (int)(habilidade.getDano() + getPoderMagico() * 0.85 + getInteligencia());
 

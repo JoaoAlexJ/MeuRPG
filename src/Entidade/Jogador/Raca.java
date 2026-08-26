@@ -11,9 +11,15 @@ public enum Raca {
            //Humano escala todos os atributos menos pdm, porem, em pouco quantidade
 
             entidade.setForca(entidade.getForca() +10);
-            entidade.setMana(entidade.getMana() +100);
+
+            entidade.setManaMaxima(entidade.getManaMaxima() +100);
+            entidade.setManaAtual(entidade.getManaAtual() +100);
+
             entidade.setArmadura(entidade.getArmadura() +10);
-            entidade.setVida(entidade.getVida() +100);
+
+            entidade.setVidaMaxima(entidade.getVidaMaxima() +100);
+            entidade.setVidaAtual(entidade.getVidaAtual() +100);
+
             entidade.setInteligencia(entidade.getInteligencia() + 30);
             entidade.setVelocidade(entidade.getVelocidade() + 10);
         }
@@ -23,7 +29,10 @@ public enum Raca {
         public void bonusAtributo(Entidade entidade) {
 
             entidade.setPoderMagico(entidade.getPoderMagico() + 30);
-            entidade.setMana(entidade.getMana() + 250);
+
+            entidade.setManaMaxima(entidade.getManaMaxima() + 250);
+            entidade.setManaAtual(entidade.getManaAtual() + 250);
+
             entidade.setInteligencia(entidade.getInteligencia() +20);
 
 
@@ -43,7 +52,9 @@ public enum Raca {
         @Override
         public void bonusAtributo(Entidade entidade) {
 
-            entidade.setMana(entidade.getMana() +100);
+            entidade.setManaMaxima(entidade.getManaMaxima() +100);
+            entidade.setManaAtual(entidade.getManaAtual() +100);
+
             entidade.setPoderMagico(entidade.getPoderMagico() +40);
 
         }
@@ -52,7 +63,9 @@ public enum Raca {
         @Override
         public void bonusAtributo(Entidade entidade) {
 
-            entidade.setVida(entidade.getVida() +200);
+            entidade.setVidaMaxima(entidade.getVidaMaxima() +200);
+            entidade.setVidaAtual(entidade.getVidaAtual() +200);
+
             entidade.setArmadura(entidade.getArmadura() +20);
             entidade.setForca(entidade.getForca() +15);
 
@@ -62,7 +75,9 @@ public enum Raca {
         @Override
         public void bonusAtributo(Entidade entidade) {
 
-            entidade.setMana(entidade.getMana() +150);
+            entidade.setManaMaxima(entidade.getManaMaxima() +150);
+            entidade.setManaAtual(entidade.getManaAtual() +150);
+
             entidade.setInteligencia(entidade.getInteligencia() +15);
             entidade.setPoderMagico(entidade.getPoderMagico() + 20);
 

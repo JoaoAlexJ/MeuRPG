@@ -66,9 +66,15 @@ public abstract class Alvos extends Entidade {
         setVelocidade(getVelocidade() * getNivel());
         setArmadura(getArmadura() * getNivel());
         setForca(getForca() * getNivel());
-        setMana(getMana() * getNivel());
+
+        setManaMaxima(getManaMaxima() * getNivel());
+        setManaAtual(getManaAtual() * getNivel());
+
         setInteligencia( getInteligencia() * getNivel());
-        setVida(getVida() * getNivel());
+
+        setVidaMaxima(getVidaMaxima() * getNivel());
+        setVidaAtual(getVidaAtual() * getNivel());
+
         setPoderMagico(getPoderMagico() * getNivel());
 
         calcularDinheiro();

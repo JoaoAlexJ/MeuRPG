@@ -1,0 +1,57 @@
+package Efeito;
+
+import Entidade.Entidade;
+
+public abstract class Efeito {
+
+    private int duracao;
+
+    Entidade origem;
+    Entidade alvo;
+
+    public Efeito(int duracao, int dano) {
+        if (duracao <= 0 ){
+            throw new IllegalArgumentException("Duração inválida");
+        }
+        if (dano < 0){
+            throw new IllegalArgumentException("Dano inválido");
+        }
+
+        this.duracao = duracao;
+    }
+
+    public abstract void execultar();
+
+    public void aplicar(){
+
+        if (this.duracao >0) {
+            execultar();
+        }
+
+
+    }
+
+    //---------------//
+
+    public int getDuracao() {
+        return duracao;
+    }
+
+    public Entidade getOrigem() {
+        return origem;
+    }
+
+    public Entidade getAlvo() {
+        return alvo;
+    }
+
+    //-----------------//
+
+    public void diminuirDuracao(){
+        if (duracao == 0){
+            throw new RuntimeException("Duração está zerada");
+        }
+
+        this.duracao--;
+    }
+}

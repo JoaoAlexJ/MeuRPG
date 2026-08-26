@@ -37,8 +37,13 @@ public class Jogador extends Entidade {
         setNivel(getNivel() + 1);
 
         setForca(getForca() +10);
-        setMana(getMana() +50);
-        setVida(getVida() +100);
+
+        setManaMaxima(getManaMaxima() +50);
+        setManaAtual(getManaAtual() +50);
+
+        setVidaMaxima(getVidaMaxima() +100);
+        setVidaAtual(getVidaAtual() +100);
+
         setInteligencia(getInteligencia() +10);
         setArmadura(getArmadura() +10);
         setPoderMagico(getPoderMagico() +10);
@@ -83,6 +88,7 @@ public class Jogador extends Entidade {
            throw new RuntimeException("Essa habilidade não está equipada");
        }
 
+       gastarMana(habilidade.getCustoMana());
 
         if (classe.equals(Classe.MAGO)){
             return (int)(habilidade.getDano() + getPoderMagico() * 0.85 + getInteligencia());

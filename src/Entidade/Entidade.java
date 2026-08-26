@@ -1,5 +1,6 @@
 package Entidade;
 
+import Efeito.Efeito;
 import Habilidade.Habilidade;
 
 import java.util.ArrayList;
@@ -10,8 +11,13 @@ public abstract class Entidade {
 
     private String nome;
     private int nivel;
-    private int mana;
-    private int vida;
+    private int manaMaxima;
+    private int manaAtual;
+
+    private int vidaMaxima;
+    private int vidaAtual;
+
+
     private int forca;
     private int inteligencia;
     private int poderMagico;
@@ -19,14 +25,16 @@ public abstract class Entidade {
     private int armadura;
 
     private double dinheiro;
+
     private List<Habilidade> habilidadesEquipadas;
     private List<Habilidade> habilidadesAprendidas;
+    private List<Efeito> efeitos;
 
-    public Entidade(String nome, int nivel, int mana, int vida, int forca,
+    public Entidade(String nome, int nivel, int manaMaxima, int vidaMaxima, int forca,
                     int inteligencia, int poderMagico, int velocidade, int armadura) {
         if (nivel <= 0 ) throw new IllegalArgumentException("Nivel inválido");
 
-        if (mana <= 0) throw new IllegalArgumentException("Mana inválida");
+        if (manaMaxima <= 0) throw new IllegalArgumentException("Mana inválida");
 
         if (forca <= 0) throw new IllegalArgumentException("Força inválida");
 
@@ -36,15 +44,19 @@ public abstract class Entidade {
 
         if (velocidade <= 0 )throw new IllegalArgumentException("Velocidade inválida");
 
-        if (vida <= 0)throw new IllegalArgumentException("Vida inválida");
+        if (vidaMaxima <= 0)throw new IllegalArgumentException("Vida inválida");
 
         if (armadura <= 0)throw new IllegalArgumentException("Armadura inválida");
 
 
         this.nome = Objects.requireNonNull(nome);
         this.nivel = nivel;
-        this.mana = mana;
-        this.vida = vida;
+        this.manaMaxima = manaMaxima;
+        this.manaAtual = manaMaxima;
+
+        this.vidaMaxima = vidaMaxima;
+        this.vidaAtual = vidaMaxima;
+
         this.forca = forca;
         this.inteligencia = inteligencia;
         this.poderMagico = poderMagico;
@@ -55,6 +67,7 @@ public abstract class Entidade {
 
         this.habilidadesEquipadas = new ArrayList<>();
         this.habilidadesAprendidas = new ArrayList<>();
+        this.efeitos = new ArrayList<>();
     }
 
     public int atacar(){
@@ -71,20 +84,43 @@ public abstract class Entidade {
             danoFinal = 5;
         }
 
-        this.vida -= danoFinal;
+        this.vidaAtual -= danoFinal;
     }
 
     public void receberDanoVerdadeiro(int dano){
 
-        this.vida -= dano;
+        this.vidaAtual -= dano;
 
-        if (this.vida < 0){
-            this.vida = 0;
+        if (this.vidaAtual < 0){
+            this.vidaAtual = 0;
         }
     }
 
+    public void aplicarEfeitos(){
+
+        if (!efeitos.isEmpty()){
+
+            for (Efeito e : this.efeitos){
+
+                e.aplicar();
+            }
+
+        }
+
+    }
+
+    public void adicionarEfeito(Efeito efeito){
+        if (efeito.getAlvo().equals(this)){
+
+            throw new RuntimeException("Esse efeito não aplicado a essa entidade");
+        }
+
+
+        efeitos.add(efeito);
+    }
+
     public boolean estaVivo(){
-        return this.vida > 0;
+        return this.vidaAtual > 0;
     }
 
     public abstract boolean podeAddHabilidade(Habilidade habilidade);
@@ -110,6 +146,16 @@ public abstract class Entidade {
 
         habilidadesEquipadas.add(hab);
     }
+
+    public void gastarMana(int valor){
+
+        if (valor > this.manaAtual){
+            throw new IllegalArgumentException("Mana insuficiente");
+        }
+
+        this.manaAtual -= valor;
+
+    }
     //----------------------------------//
 
 
@@ -121,8 +167,16 @@ public abstract class Entidade {
         return new ArrayList<>(habilidadesEquipadas);
     }
 
-    public int getVida() {
-        return vida;
+    public List<Efeito> getEfeitos() {
+        return new ArrayList<>(efeitos);
+    }
+
+    public int getVidaAtual() {
+        return vidaAtual;
+    }
+
+    public int getVidaMaxima() {
+        return vidaMaxima;
     }
 
     public String getNome() {
@@ -133,8 +187,12 @@ public abstract class Entidade {
         return nivel;
     }
 
-    public int getMana() {
-        return mana;
+    public int getManaAtual() {
+        return manaAtual;
+    }
+
+    public int getManaMaxima() {
+        return manaMaxima;
     }
 
     public int getForca() {
@@ -168,17 +226,30 @@ public abstract class Entidade {
         this.nivel = nivel;
     }
 
-    public void setMana(int mana) {
+    public void setManaAtual(int mana) {
         if (mana <= 0) throw new IllegalArgumentException("Mana inválida");
 
 
-        this.mana = mana;
+        this.manaAtual = mana;
     }
 
-    public void setVida(int vida) {
+    public void setManaMaxima(int mana) {
+        if (mana <= 0) throw new IllegalArgumentException("Mana inválida");
+
+
+        this.manaMaxima = mana;
+    }
+
+    public void setVidaMaxima(int vida) {
         if (vida <= 0 )throw new IllegalArgumentException("vida inválida");
 
-        this.vida = vida;
+        this.vidaMaxima = vida;
+    }
+
+    public void setVidaAtual(int vida) {
+        if (vida <= 0 )throw new IllegalArgumentException("vida inválida");
+
+        this.vidaAtual = vida;
     }
 
     public void setForca(int forca) {

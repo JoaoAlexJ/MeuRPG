@@ -20,6 +20,7 @@ public class Npc extends Entidade {
 
         this.raca = raca;
         this.falas = falas;
+
         this.raca.bonusAtributo(this);
 
     }

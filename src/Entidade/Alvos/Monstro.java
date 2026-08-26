@@ -26,6 +26,7 @@ public class Monstro extends Alvos{
 
         this.tipoMonstro = tipoMonstro;
 
+        this.tipoMonstro.bonusMonstro(this);
         calcularCriacao();
     }
 
@@ -43,6 +44,7 @@ public class Monstro extends Alvos{
             throw new RuntimeException("Essa habilidade não está equipada");
         }
 
+        gastarMana(habilidade.getCustoMana());
 
         if (tipoMonstro.equals(TipoMonstro.DRAGAO)){
             return (int)(habilidade.getDano() + getPoderMagico() * 0.85 + getForca() * 0.20);

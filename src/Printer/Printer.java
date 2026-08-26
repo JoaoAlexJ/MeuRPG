@@ -14,8 +14,8 @@ public class  Printer {
         System.out.println("Raça: "+criatura.getRaca());
         System.out.println("Classe: "+criatura.getClasse());
         System.out.println("Nivel: "+criatura.getNivel());
-        System.out.println("Mana: "+criatura.getMana());
-        System.out.println("Vida: "+criatura.getVida());
+        System.out.println("Mana: "+criatura.getManaAtual());
+        System.out.println("Vida: "+criatura.getVidaAtual());
         System.out.println("Força: "+criatura.getForca());
         System.out.println("Inteligencia: "+criatura.getInteligencia());
         System.out.println("Poder Magico: "+criatura.getPoderMagico());
@@ -32,8 +32,8 @@ public class  Printer {
         System.out.println("Classe: "+jogador.getClasse());
         System.out.println("XP: "+jogador.getXp());
         System.out.println("Nivel: "+jogador.getNivel());
-        System.out.println("Mana: "+jogador.getMana());
-        System.out.println("Vida: "+jogador.getVida());
+        System.out.println("Mana: "+jogador.getManaAtual());
+        System.out.println("Vida: "+jogador.getVidaAtual());
         System.out.println("Força: "+jogador.getForca());
         System.out.println("Inteligencia: "+jogador.getInteligencia());
         System.out.println("Poder Magico: "+jogador.getPoderMagico());
@@ -48,8 +48,8 @@ public class  Printer {
         System.out.println("Nome: "+monstro.getNome());
         System.out.println("Monstro: "+monstro.getTipoMonstro());
         System.out.println("Nivel: "+monstro.getNivel());
-        System.out.println("Mana: "+monstro.getMana());
-        System.out.println("Vida: "+monstro.getVida());
+        System.out.println("Mana: "+monstro.getManaAtual());
+        System.out.println("Vida: "+monstro.getVidaAtual());
         System.out.println("Força: "+monstro.getForca());
         System.out.println("Inteligencia: "+monstro.getInteligencia());
         System.out.println("Poder Magico: "+monstro.getPoderMagico());
