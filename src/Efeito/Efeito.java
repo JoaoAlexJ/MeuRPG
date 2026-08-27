@@ -9,13 +9,13 @@ public abstract class Efeito {
     Entidade origem;
     Entidade alvo;
 
-    public Efeito(int duracao, int dano) {
+    public Efeito(int duracao, Entidade origem, Entidade alvo) {
         if (duracao <= 0 ){
             throw new IllegalArgumentException("Duração inválida");
         }
-        if (dano < 0){
-            throw new IllegalArgumentException("Dano inválido");
-        }
+
+        this.origem = origem;
+        this.alvo = alvo;
 
         this.duracao = duracao;
     }
