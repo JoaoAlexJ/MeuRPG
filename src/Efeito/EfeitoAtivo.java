@@ -4,31 +4,24 @@ import Entidade.Entidade;
 
 public abstract class EfeitoAtivo {
 
+    private Efeito efeito;
     private int duracao;
 
     Entidade origem;
     Entidade alvo;
 
-    public EfeitoAtivo(int duracao, Entidade origem, Entidade alvo) {
+    public EfeitoAtivo(Efeito efeito, int duracao, Entidade origem, Entidade alvo) {
         if (duracao <= 0 ){
             throw new IllegalArgumentException("Duração inválida");
         }
 
+        this.efeito = efeito;
         this.origem = origem;
         this.alvo = alvo;
 
         this.duracao = duracao;
     }
 
-    public void adicionarAlvo(Entidade alvo) {
-        if (this.alvo != null)throw new RuntimeException("Alvo já definido");
-        this.alvo = alvo;
-    }
-
-    public void adicionarOrigem(Entidade origem){
-        if (this.origem != null)throw new RuntimeException("Origem já definida");
-        this.origem = origem;
-    }
 
     public abstract void execultar();
 

@@ -53,6 +53,8 @@ public class Main {
 
         j1.aprenderHabilidade(habilidadeComum);
 
+        System.out.println(itemsDragao);
+
 
 
 

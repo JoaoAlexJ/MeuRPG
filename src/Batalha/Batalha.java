@@ -1,5 +1,6 @@
 package Batalha;
 
+import Efeito.Efeito;
 import Efeito.EfeitoAtivo;
 import Entidade.Entidade;
 import Habilidade.Habilidade;
@@ -33,7 +34,7 @@ public class Batalha {
         int danoFinal = alvo.receberDano(atacante.usarHabilidade(habilidade));
 
         if (habilidade.getEfeito() != null){
-            alvo.adicionarEfeito(habilidade.getEfeito().returnEfeitoAtivo(atacante, alvo));
+            alvo.adicionarEfeito(habilidade.getEfeito().returnEfeitoAtivo(habilidade.getEfeito(), atacante, alvo));
         }
 
         return new RelatoriodeBatalha(atacante, alvo, danoFinal, habilidade);

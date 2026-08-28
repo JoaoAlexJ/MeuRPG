@@ -1,9 +1,11 @@
 package Entidade;
 
+import Efeito.Efeito;
 import Efeito.EfeitoAtivo;
 import Habilidade.Habilidade;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 
@@ -101,12 +103,16 @@ public abstract class Entidade {
 
         if (!efeitoAtivos.isEmpty()){
 
-            for (EfeitoAtivo e : this.efeitoAtivos){
+            Iterator<EfeitoAtivo> it = efeitoAtivos.iterator();
 
-                e.aplicar();
+            while (it.hasNext()){
+
+                EfeitoAtivo e = it.next();
+
                 if (e.getDuracao() == 0){
-                    efeitoAtivos.remove(e);
+                    it.remove();
                 }
+
             }
 
         }
