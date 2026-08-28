@@ -3,6 +3,7 @@ package Printer;
 import Entidade.Alvos.Criatura;
 import Entidade.Alvos.Monstro;
 import Entidade.Jogador.Jogador;
+import Relatorio.RelatoriodeBatalha;
 
 import java.sql.SQLOutput;
 
@@ -62,5 +63,18 @@ public class  Printer {
 
     public static void printLinha(){
         System.out.println("====================================");
+    }
+
+    public static void printRelatorioBatalha(RelatoriodeBatalha rtb){
+
+        if (rtb.getHabilidade() == null) {
+            System.out.println(rtb.getAtacante().getNome() + " atacou " + rtb.getAlvo()
+                    .getNome() + " e causou " + rtb.getDano() + " de dano.");
+        }else {
+
+            System.out.println(rtb.getAtacante().getNome()+" usou "+rtb.getHabilidade().getNome()+" e causou "+
+                    rtb.getDano() +" de dano");
+
+        };
     }
 }

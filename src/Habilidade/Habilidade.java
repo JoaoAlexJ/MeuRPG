@@ -27,6 +27,7 @@ public class Habilidade {
         this.raridade = raridade;
         this.requisitoMonstro = requisitoMonstro;
         this.tipoHabilidade = tipoHabilidade;
+        this.efeito = efeito;
 
     }
 
@@ -37,14 +38,17 @@ public class Habilidade {
         this.raridade = raridade;
         this.requisitoClasse = requisitoClasse;
         this.tipoHabilidade = tipoHabilidade;
+        this.efeito = efeito;
     }
 
     public Habilidade(String nome, int dano, int custoMana, Raridade raridade, TipoHabilidade tipoHabilidade,Efeito efeito) {
+
         this.nome = nome;
         this.dano = dano;
         this.custoMana = custoMana;
         this.raridade = raridade;
         this.tipoHabilidade = tipoHabilidade;
+        this.efeito = efeito;
     }
 
 
@@ -75,5 +79,9 @@ public class Habilidade {
 
     public TipoHabilidade getTipoHabilidade() {
         return tipoHabilidade;
+    }
+
+    public Efeito getEfeito() {
+        return efeito;
     }
 }

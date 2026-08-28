@@ -76,7 +76,7 @@ public abstract class Entidade {
 
     public abstract int usarHabilidade(Habilidade habilidade);
 
-    public void receberDano(int dano){
+    public int receberDano(int dano){
 
         int danoFinal = dano - this.armadura;
 
@@ -85,6 +85,7 @@ public abstract class Entidade {
         }
 
         this.vidaAtual -= danoFinal;
+        return danoFinal;
     }
 
     public void receberDanoVerdadeiro(int dano){

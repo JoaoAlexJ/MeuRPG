@@ -20,6 +20,16 @@ public abstract class Efeito {
         this.duracao = duracao;
     }
 
+    public void adicionarAlvo(Entidade alvo) {
+        if (this.alvo != null)throw new RuntimeException("Alvo já definido");
+        this.alvo = alvo;
+    }
+
+    public void adicionarOrigem(Entidade origem){
+        if (this.origem != null)throw new RuntimeException("Origem já definida");
+        this.origem = origem;
+    }
+
     public abstract void execultar();
 
     public void aplicar(){
