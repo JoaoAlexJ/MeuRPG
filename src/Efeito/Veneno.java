@@ -2,10 +2,13 @@ package Efeito;
 
 import Entidade.Entidade;
 
-public class Veneno extends Efeito{
+public class Veneno extends EfeitoAtivo {
 
-    public Veneno(int duracao, Entidade origem, Entidade alvo) {
-        super(duracao, origem, alvo);
+    private final static int DURACAO = 2;
+
+
+    public Veneno(Entidade origem, Entidade alvo) {
+        super(DURACAO, origem, alvo);
     }
 
     @Override

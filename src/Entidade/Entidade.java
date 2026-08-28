@@ -1,6 +1,6 @@
 package Entidade;
 
-import Efeito.Efeito;
+import Efeito.EfeitoAtivo;
 import Habilidade.Habilidade;
 
 import java.util.ArrayList;
@@ -28,7 +28,7 @@ public abstract class Entidade {
 
     private List<Habilidade> habilidadesEquipadas;
     private List<Habilidade> habilidadesAprendidas;
-    private List<Efeito> efeitos;
+    private List<EfeitoAtivo> efeitoAtivos;
 
     public Entidade(String nome, int nivel, int manaMaxima, int vidaMaxima, int forca,
                     int inteligencia, int poderMagico, int velocidade, int armadura) {
@@ -67,7 +67,7 @@ public abstract class Entidade {
 
         this.habilidadesEquipadas = new ArrayList<>();
         this.habilidadesAprendidas = new ArrayList<>();
-        this.efeitos = new ArrayList<>();
+        this.efeitoAtivos = new ArrayList<>();
     }
 
     public int atacar(){
@@ -99,25 +99,28 @@ public abstract class Entidade {
 
     public void aplicarEfeitos(){
 
-        if (!efeitos.isEmpty()){
+        if (!efeitoAtivos.isEmpty()){
 
-            for (Efeito e : this.efeitos){
+            for (EfeitoAtivo e : this.efeitoAtivos){
 
                 e.aplicar();
+                if (e.getDuracao() == 0){
+                    efeitoAtivos.remove(e);
+                }
             }
 
         }
 
     }
 
-    public void adicionarEfeito(Efeito efeito){
-        if (efeito.getAlvo().equals(this)){
+    public void adicionarEfeito(EfeitoAtivo efeitoAtivo){
+        if (efeitoAtivo.getAlvo().equals(this)){
 
             throw new RuntimeException("Esse efeito não aplicado a essa entidade");
         }
 
 
-        efeitos.add(efeito);
+        efeitoAtivos.add(efeitoAtivo);
     }
 
     public boolean estaVivo(){
@@ -168,8 +171,8 @@ public abstract class Entidade {
         return new ArrayList<>(habilidadesEquipadas);
     }
 
-    public List<Efeito> getEfeitos() {
-        return new ArrayList<>(efeitos);
+    public List<EfeitoAtivo> getEfeitos() {
+        return new ArrayList<>(efeitoAtivos);
     }
 
     public int getVidaAtual() {

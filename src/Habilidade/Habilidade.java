@@ -1,9 +1,9 @@
 package Habilidade;
 
 import Efeito.Efeito;
+import Efeito.EfeitoAtivo;
 import Entidade.Alvos.TipoMonstro;
 import Entidade.Classe;
-import Entidade.Jogador.Raca;
 import Item.Raridade;
 
 public class Habilidade {
@@ -19,7 +19,7 @@ public class Habilidade {
 
     private Efeito efeito;
 
-    public Habilidade(String nome, int dano, int custoMana, Raridade raridade, TipoHabilidade tipoHabilidade,Efeito efeito, TipoMonstro requisitoMonstro ) {
+    public Habilidade(String nome, int dano, int custoMana, Raridade raridade, TipoHabilidade tipoHabilidade, Efeito efeito, TipoMonstro requisitoMonstro ) {
 
         this.nome = nome;
         this.dano = dano;
@@ -41,7 +41,7 @@ public class Habilidade {
         this.efeito = efeito;
     }
 
-    public Habilidade(String nome, int dano, int custoMana, Raridade raridade, TipoHabilidade tipoHabilidade,Efeito efeito) {
+    public Habilidade(String nome, int dano, int custoMana, Raridade raridade, TipoHabilidade tipoHabilidade, Efeito efeito) {
 
         this.nome = nome;
         this.dano = dano;
@@ -50,6 +50,7 @@ public class Habilidade {
         this.tipoHabilidade = tipoHabilidade;
         this.efeito = efeito;
     }
+
 
 
     //--------------------------//
