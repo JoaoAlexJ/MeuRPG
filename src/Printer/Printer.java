@@ -3,9 +3,7 @@ package Printer;
 import Entidade.Alvos.Criatura;
 import Entidade.Alvos.Monstro;
 import Entidade.Jogador.Jogador;
-import Relatorio.RelatoriodeBatalha;
-
-import java.sql.SQLOutput;
+import Relatorio.RelatorioBatalha;
 
 public class  Printer {
 
@@ -65,15 +63,15 @@ public class  Printer {
         System.out.println("====================================");
     }
 
-    public static void printRelatorioBatalha(RelatoriodeBatalha rtb){
+    public static void printRelatorioBatalha(RelatorioBatalha rtb){
 
-        if (rtb.getHabilidade() == null) {
-            System.out.println(rtb.getAtacante().getNome() + " atacou " + rtb.getAlvo()
-                    .getNome() + " e causou " + rtb.getDano() + " de dano.");
+        if (rtb.habilidade() == null) {
+            System.out.println(rtb.atacante().getNome() + " atacou " + rtb.alvo()
+                    .getNome() + " e causou " + rtb.dano() + " de dano.");
         }else {
 
-            System.out.println(rtb.getAtacante().getNome()+" usou "+rtb.getHabilidade().getNome()+" e causou "+
-                    rtb.getDano() +" de dano");
+            System.out.println(rtb.atacante().getNome()+" usou "+rtb.habilidade().getNome()+" e causou "+
+                    rtb.dano() +" de dano");
 
         };
     }

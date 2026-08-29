@@ -3,7 +3,9 @@ package Entidade;
 import Efeito.Efeito;
 import Efeito.EfeitoAtivo;
 import Habilidade.Habilidade;
+import Relatorio.RelatorioEfeito;
 
+import java.awt.font.FontRenderContext;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -99,24 +101,23 @@ public abstract class Entidade {
         }
     }
 
-    public void aplicarEfeitos(){
+    public List<RelatorioEfeito> aplicarEfeitos(){
+
+        List<RelatorioEfeito> relatorios = new ArrayList<>();
 
         if (!efeitoAtivos.isEmpty()){
 
-            Iterator<EfeitoAtivo> it = efeitoAtivos.iterator();
+            for (EfeitoAtivo e : efeitoAtivos){
+                int dano = e.aplicar();
+                String nomeEfeito = e.getClass().getSimpleName();
 
-            while (it.hasNext()){
-
-                EfeitoAtivo e = it.next();
-
-                if (e.getDuracao() == 0){
-                    it.remove();
-                }
-
+                relatorios.add(new RelatorioEfeito(nomeEfeito, e.getOrigem(), e.getAlvo(), dano));
             }
+                efeitoAtivos.removeIf(e1 -> e1.getDuracao() == 0);
 
         }
 
+        return relatorios;
     }
 
     public void adicionarEfeito(EfeitoAtivo efeitoAtivo){

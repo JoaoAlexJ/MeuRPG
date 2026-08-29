@@ -52,6 +52,16 @@ public class Main {
         dragao.equiparHabilidade(habilidaDragao.getNome());
 
         j1.aprenderHabilidade(habilidadeComum);
+        dragao.aprenderHabilidade(habilidadeComum);
+        goblim.aprenderHabilidade(habilidadeComum);
+
+        j1.equiparHabilidade(habilidadeComum.getNome());
+        dragao.equiparHabilidade(habilidadeComum.getNome());
+        goblim.equiparHabilidade(habilidadeComum.getNome());
+
+
+
+
 
         System.out.println(itemsDragao);
 

@@ -4,18 +4,16 @@ import Entidade.Entidade;
 
 public abstract class EfeitoAtivo {
 
-    private Efeito efeito;
     private int duracao;
 
     Entidade origem;
     Entidade alvo;
 
-    public EfeitoAtivo(Efeito efeito, int duracao, Entidade origem, Entidade alvo) {
+    public EfeitoAtivo(int duracao, Entidade origem, Entidade alvo) {
         if (duracao <= 0 ){
             throw new IllegalArgumentException("Duração inválida");
         }
 
-        this.efeito = efeito;
         this.origem = origem;
         this.alvo = alvo;
 
@@ -23,15 +21,15 @@ public abstract class EfeitoAtivo {
     }
 
 
-    public abstract void execultar();
+    public abstract int execultar();
 
-    public void aplicar(){
+    public int aplicar(){
 
         if (this.duracao >0) {
-            execultar();
+            return execultar();
         }
 
-
+        return 0;
     }
 
     //---------------//

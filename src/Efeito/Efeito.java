@@ -6,10 +6,10 @@ public enum Efeito {
 
     VENENO{
         @Override
-        public EfeitoAtivo returnEfeitoAtivo(Efeito efeito, Entidade origem, Entidade alvo) {
-            return new Veneno(efeito, origem, alvo);
+        public EfeitoAtivo returnEfeitoAtivo(Entidade origem, Entidade alvo) {
+            return new Veneno(origem, alvo);
         }
     };
 
-    public abstract EfeitoAtivo returnEfeitoAtivo(Efeito efeito, Entidade atacante, Entidade alvo);
+    public abstract EfeitoAtivo returnEfeitoAtivo(Entidade atacante, Entidade alvo);
 }

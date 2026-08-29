@@ -1,43 +1,44 @@
 package Batalha;
 
-import Efeito.Efeito;
-import Efeito.EfeitoAtivo;
 import Entidade.Entidade;
 import Habilidade.Habilidade;
-import Relatorio.RelatoriodeBatalha;
+import Relatorio.RelatorioBatalha;
+import Relatorio.RelatorioEfeito;
+
+import java.util.List;
 
 public class Batalha {
 
-    public RelatoriodeBatalha ataqueComum(Entidade atacante, Entidade alvo){
+    public RelatorioBatalha ataqueComum(Entidade atacante, Entidade alvo){
         if (!atacante.estaVivo() || !alvo.estaVivo()){
             throw new RuntimeException("As duas entidades precisam estar vivas para batalhar");
         }
 
-        alvo.aplicarEfeitos();
+        List<RelatorioEfeito> efeitos = alvo.aplicarEfeitos();
 
         int danoFinal = alvo.receberDano(atacante.atacar());
 
 
-        return new RelatoriodeBatalha(atacante, alvo, danoFinal, null);
+        return new RelatorioBatalha(atacante, alvo, danoFinal, null, efeitos);
     }
 
 
 
-    public RelatoriodeBatalha ataqueComHabilidade(Entidade atacante, Entidade alvo, Habilidade habilidade){
+    public RelatorioBatalha ataqueComHabilidade(Entidade atacante, Entidade alvo, Habilidade habilidade){
 
         if (!atacante.estaVivo() || !alvo.estaVivo()){
             throw new RuntimeException("As duas entidades precisam estar vivas para batalhar");
         }
 
-        alvo.aplicarEfeitos();
+        List<RelatorioEfeito> efeitos = alvo.aplicarEfeitos();
 
         int danoFinal = alvo.receberDano(atacante.usarHabilidade(habilidade));
 
         if (habilidade.getEfeito() != null){
-            alvo.adicionarEfeito(habilidade.getEfeito().returnEfeitoAtivo(habilidade.getEfeito(), atacante, alvo));
+            alvo.adicionarEfeito(habilidade.getEfeito().returnEfeitoAtivo(atacante, alvo));
         }
 
-        return new RelatoriodeBatalha(atacante, alvo, danoFinal, habilidade);
+        return new RelatorioBatalha(atacante, alvo, danoFinal, habilidade, efeitos);
 
     }
 }
