@@ -121,9 +121,9 @@ public abstract class Entidade {
     }
 
     public void adicionarEfeito(EfeitoAtivo efeitoAtivo){
-        if (efeitoAtivo.getAlvo().equals(this)){
+        if (!efeitoAtivo.getAlvo().equals(this)){
 
-            throw new RuntimeException("Esse efeito não aplicado a essa entidade");
+            throw new RuntimeException("Esse efeito não foi aplicado a essa entidade");
         }
 
 
