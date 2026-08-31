@@ -1,6 +1,6 @@
-package Entidade;
+package Entidade.Personagem;
 
-import Entidade.Jogador.Raca;
+import Entidade.Entidade;
 import Habilidade.Habilidade;
 
 public abstract class Personagem extends Entidade {

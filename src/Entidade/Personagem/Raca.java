@@ -1,4 +1,4 @@
-package Entidade.Jogador;
+package Entidade.Personagem;
 
 import Entidade.Entidade;
 

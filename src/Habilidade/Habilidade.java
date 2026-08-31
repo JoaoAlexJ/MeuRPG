@@ -1,9 +1,8 @@
 package Habilidade;
 
 import Efeito.Efeito;
-import Efeito.EfeitoAtivo;
 import Entidade.Alvos.TipoMonstro;
-import Entidade.Classe;
+import Entidade.Personagem.Classe;
 import Item.Raridade;
 
 public class Habilidade {

@@ -4,7 +4,7 @@ public abstract class Item {
 
     private String nome;
     private Raridade raridade;
-    private int preco;
+    private double preco;
 
     public Item(String nome, Raridade raridade, int preco) {
         this.nome = nome;
@@ -20,7 +20,16 @@ public abstract class Item {
         return raridade;
     }
 
-    public int getPreco() {
+    public double getPreco() {
         return preco;
+    }
+
+    //--------------------//
+
+
+    public void setPreco(double preco) {
+        if (preco < 0)throw new IllegalArgumentException("Preço inválido");
+
+        this.preco = preco;
     }
 }

@@ -1,8 +1,6 @@
 package Entidade.Alvos;
 
 import Entidade.Entidade;
-import Entidade.Classe;
-import Entidade.Jogador.Raca;
 import Item.DropItem;
 import Item.Item;
 

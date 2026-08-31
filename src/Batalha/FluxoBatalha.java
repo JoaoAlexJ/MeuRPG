@@ -1,7 +1,7 @@
 package Batalha;
 
 import Entidade.Entidade;
-import Entidade.Jogador.Jogador;
+import Entidade.Personagem.Jogador.Jogador;
 import Printer.Printer;
 
 import java.util.Scanner;

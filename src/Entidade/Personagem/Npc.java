@@ -1,13 +1,9 @@
-package Entidade;
+package Entidade.Personagem;
 
-import Entidade.Alvos.Criatura;
-import Entidade.Jogador.Raca;
 import Habilidade.Habilidade;
-import Item.DropItem;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class Npc extends Personagem {
 

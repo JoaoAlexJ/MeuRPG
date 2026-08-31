@@ -1,7 +1,7 @@
 package Entidade.Alvos;
 
-import Entidade.Classe;
-import Entidade.Jogador.Raca;
+import Entidade.Personagem.Classe;
+import Entidade.Personagem.Raca;
 import Habilidade.Habilidade;
 import Item.DropItem;
 

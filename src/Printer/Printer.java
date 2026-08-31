@@ -3,8 +3,8 @@ package Printer;
 import Entidade.Alvos.Criatura;
 import Entidade.Alvos.Monstro;
 import Entidade.Entidade;
-import Entidade.Npc;
-import Entidade.Jogador.Jogador;
+import Entidade.Personagem.Npc;
+import Entidade.Personagem.Jogador.Jogador;
 import Relatorio.RelatorioBatalha;
 import Relatorio.RelatorioEfeito;
 

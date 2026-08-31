@@ -1,5 +1,6 @@
-package Entidade;
+package Entidade.Personagem;
 
+import Entidade.Entidade;
 import Habilidade.Habilidade;
 
 public enum Classe {

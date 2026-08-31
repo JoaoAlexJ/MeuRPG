@@ -1,10 +1,14 @@
-package Entidade.Jogador;
+package Entidade.Personagem.Jogador;
 
-import Entidade.Personagem;
-import Entidade.Classe;
+import Entidade.Pacificos.Comerciante;
+import Entidade.Personagem.Personagem;
+import Entidade.Personagem.Classe;
+import Entidade.Personagem.Raca;
+import Entidade.Vendedor;
 import Habilidade.Habilidade;
+import Item.Item;
 
-public class Jogador extends Personagem {
+public class Jogador extends Personagem implements Vendedor {
 
     private int xp;
     private Inventario inventario;
@@ -66,6 +70,40 @@ public class Jogador extends Personagem {
         return xp;
     }
 
+    //-----------------//
+
+    @Override
+    public Item vender(Item item, double valor){
+
+        if (inventario.getItems().contains(item) && valor == item.getPreco()){
+
+            inventario.removerItem(item);
+            setDinheiro(getDinheiro() + valor);
+            return item;
+        }
+
+        System.err.println("Erro na venda");
+        return null;
+    }
+
+    public void comprarItem(Comerciante comerciante, Item item){
+
+        if (getDinheiro() >= item.getPreco()){
+
+            inventario.adicionarItem(comerciante.vender(item, gastarDinheiro(item.getPreco())));
+
+        }
+
+    }
+
+    public double gastarDinheiro(double valor){
+        if (valor > getDinheiro())throw new IllegalArgumentException("saldo insuficiente");
+        if (valor <= getDinheiro())throw new IllegalArgumentException("Valor inválido");
+
+        setDinheiro(getDinheiro() - valor);
+        return valor;
+
+    }
 
     @Override
     public boolean podeAddHabilidade(Habilidade habilidade) {
