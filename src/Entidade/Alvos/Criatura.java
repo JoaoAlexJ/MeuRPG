@@ -7,7 +7,7 @@ import Item.DropItem;
 
 import java.util.List;
 
-public class Criatura extends Alvos{
+public class Criatura extends Alvos {
 
     private Raca raca;
     private Classe classe;
@@ -63,20 +63,12 @@ public class Criatura extends Alvos{
 
         gastarMana(habilidade.getCustoMana());
 
-        if (classe.equals(Classe.MAGO)){
-            return (int)(habilidade.getDano() + getPoderMagico() * 0.85 + getInteligencia());
-
-        } else if (classe.equals(Classe.ARQUEIRO)) {
-            return (int)(habilidade.getDano() + getForca() * 0.40 + getInteligencia() * 0.40 + getVelocidade() * 0.10);
-
-        } else if (classe.equals(Classe.ASSASINO)) {
-            return (int)(habilidade.getDano() + getForca() * 0.85 +getVelocidade() * 0.05 );
-
-        } else if (classe.equals(Classe.GUERREIRO)) {
-            return (int)(habilidade.getDano() + getForca() + getArmadura() * 0.38);
+        if (getClasse() != null){
+            return getClasse().calcularDanoHabilidade(habilidade, this);
         }
 
-        else return (int) (habilidade.getDano() + getForca() * 0.20);
+        return (int) (habilidade.getDano() + getForca() * 0.20);
+
     }
 
     @Override
@@ -90,4 +82,5 @@ public class Criatura extends Alvos{
 
         else return false;
     }
+
 }

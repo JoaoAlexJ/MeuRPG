@@ -1,5 +1,7 @@
 package Entidade;
 
+import Habilidade.Habilidade;
+
 public enum Classe {
 
     MAGO{
@@ -13,6 +15,11 @@ public enum Classe {
             entidade.setManaAtual(entidade.getManaAtual() + 100);
 
 
+        }
+
+        @Override
+        public int calcularDanoHabilidade(Habilidade habilidade, Entidade entidade) {
+            return (int) (habilidade.getDano() + entidade.getPoderMagico() * 0.85 + entidade.getInteligencia());
         }
     },
     GUERREIRO{
@@ -28,6 +35,12 @@ public enum Classe {
 
 
         }
+
+        @Override
+        public int calcularDanoHabilidade(Habilidade habilidade, Entidade entidade) {
+            return (int) (habilidade.getDano() + entidade.getForca() + entidade.getArmadura() * 0.38);
+
+        }
     },
     ASSASINO{
         @Override
@@ -37,6 +50,11 @@ public enum Classe {
             entidade.setForca(entidade.getForca() + 15);
             entidade.setInteligencia(entidade.getInteligencia() + 5 );
 
+        }
+
+        @Override
+        public int calcularDanoHabilidade(Habilidade habilidade, Entidade entidade) {
+            return (int) (habilidade.getDano() + entidade.getForca() * 0.85 + entidade.getVelocidade() * 0.05);
         }
     },
     ARQUEIRO{
@@ -48,11 +66,17 @@ public enum Classe {
             entidade.setForca(entidade.getForca() + 15);
 
         }
+
+        @Override
+        public int calcularDanoHabilidade(Habilidade habilidade, Entidade entidade) {
+            return (int) (habilidade.getDano() + entidade.getForca() * 0.40 + entidade.getInteligencia() * 0.40 + entidade.getVelocidade() * 0.10);
+
+        }
     };
 
 
     public abstract void bonusClasse(Entidade entidade);
-
+    public abstract int calcularDanoHabilidade(Habilidade habilidade, Entidade entidade);
 
 
 }

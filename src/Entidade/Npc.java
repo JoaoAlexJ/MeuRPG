@@ -9,20 +9,22 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Npc extends Criatura {
+public class Npc extends Personagem {
 
     private List<String> falas;
 
-    public Npc(String nome, int nivel, Raca raca, List<DropItem> items, List<String> falas, Classe classe) {
-        super(nome, nivel, raca, items, classe);
+    public Npc(String nome, int nivel, int manaMaxima, int vidaMaxima, int forca, int inteligencia, int poderMagico, int velocidade,
+               int armadura, Raca raca,List<String> falas, Classe classe) {
+        super(nome, nivel, manaMaxima, vidaMaxima, forca, inteligencia, poderMagico, velocidade, armadura, raca, classe);
 
-        this.falas = Objects.requireNonNull(falas);
+        this.falas = falas;
     }
 
-    public Npc(String nome, int nivel, Raca raca, List<DropItem> items, List<String> falas) {
-        super(nome, nivel, raca, items);
+    public Npc(String nome, int nivel, int manaMaxima, int vidaMaxima, int forca, int inteligencia, int poderMagico, int velocidade,
+               int armadura, Raca raca, List<String> falas) {
+        super(nome, nivel, manaMaxima, vidaMaxima, forca, inteligencia, poderMagico, velocidade, armadura, raca);
 
-        this.falas = Objects.requireNonNull(falas);
+        this.falas = falas;
     }
 
 
@@ -45,32 +47,6 @@ public class Npc extends Criatura {
 
     public List<String> getFalas() {
         return new ArrayList<>(falas);
-    }
-
-
-    @Override
-    public int usarHabilidade(Habilidade habilidade) {
-
-        if (!getHabilidadesEquipadas().contains(habilidade)){
-
-            throw new RuntimeException("Essa habilidade não está equipada");
-        }
-
-        if (getClasse().equals(Classe.MAGO)){
-            return (int)(habilidade.getDano() + getPoderMagico() * 0.85 + getInteligencia());
-
-        } else if (getClasse().equals(Classe.ARQUEIRO)) {
-            return (int)(habilidade.getDano() + getForca() * 0.40 + getInteligencia() * 0.40 + getVelocidade() * 0.10);
-
-        } else if (getClasse().equals(Classe.ASSASINO)) {
-            return (int)(habilidade.getDano() + getForca() * 0.85 +getVelocidade() * 0.05 );
-
-        } else if (getClasse().equals(Classe.GUERREIRO)) {
-            return (int)(habilidade.getDano() + getForca() + getArmadura() * 0.38);
-        }
-
-        else return (int) (habilidade.getDano() + getForca() * 0.20);
-
     }
 
     @Override

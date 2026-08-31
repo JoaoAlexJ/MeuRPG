@@ -38,7 +38,7 @@ public class Main {
         );
 
 
-        Jogador j1 = new Jogador("Joao", 1, Classe.MAGO, Raca.ELFO);
+        Jogador j1 = new Jogador("Joao", 1, Raca.ELFO,  Classe.MAGO);
         Criatura goblim = new Criatura("Divo", 5, Raca.GOBLIM, itemsGoblim, Classe.ASSASINO);
         Monstro dragao = new Monstro("Hyjir", 5, itemsDragao, TipoMonstro.DRAGAO);
 
