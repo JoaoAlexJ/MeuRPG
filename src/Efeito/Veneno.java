@@ -14,7 +14,7 @@ public class Veneno extends EfeitoAtivo {
     @Override
     public int execultar() {
 
-        int dano = (int) (getOrigem().getInteligencia() * 0.80 + getOrigem().getPoderMagico() * 0.20);
+        int dano = (int) (getOrigem().getInteligencia() * 0.65 + getOrigem().getPoderMagico() * 0.05);
         getAlvo().receberDanoVerdadeiro(dano);
         diminuirDuracao();
 

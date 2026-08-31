@@ -1,3 +1,6 @@
+import Batalha.Batalha;
+import Batalha.IAinimiga;
+import Efeito.Efeito;
 import Entidade.Alvos.Alvos;
 import Entidade.Alvos.Criatura;
 import Entidade.Alvos.Monstro;
@@ -12,6 +15,7 @@ import Item.Material;
 import Item.Raridade;
 import Printer.Printer;
 import Habilidade.TipoHabilidade;
+import Relatorio.RelatorioBatalha;
 
 import java.util.List;
 
@@ -38,9 +42,9 @@ public class Main {
         Criatura goblim = new Criatura("Divo", 5, Raca.GOBLIM, itemsGoblim, Classe.ASSASINO);
         Monstro dragao = new Monstro("Hyjir", 5, itemsDragao, TipoMonstro.DRAGAO);
 
-        Habilidade habilidadeMago = new Habilidade("Bola de fogo", 60, 25, Raridade.COMUM, TipoHabilidade.MAGICO, null, Classe.MAGO);
-        Habilidade habilidaDragao = new Habilidade("Sopro de dragão", 100, 35, Raridade.INCOMUM, TipoHabilidade.MAGICO,null,  TipoMonstro.DRAGAO );
-        Habilidade habilidadeComum = new Habilidade("Soco fortalecido", 50, 10, Raridade.COMUM, TipoHabilidade.FISICO, null);
+        Habilidade habilidadeMago = new Habilidade("Bola de fogo", 60, 25, Raridade.COMUM, TipoHabilidade.MAGICO, Efeito.VENENO, Classe.MAGO);
+        Habilidade habilidaDragao = new Habilidade("Sopro de dragão", 100, 35, Raridade.INCOMUM, TipoHabilidade.MAGICO,Efeito.VENENO,  TipoMonstro.DRAGAO );
+        Habilidade habilidadeComum = new Habilidade("Soco fortalecido", 50, 10, Raridade.COMUM, TipoHabilidade.FISICO, Efeito.VENENO);
 
         j1.aprenderHabilidade(habilidadeMago);
         j1.equiparHabilidade(habilidadeMago.getNome());
@@ -53,18 +57,25 @@ public class Main {
 
         j1.aprenderHabilidade(habilidadeComum);
         dragao.aprenderHabilidade(habilidadeComum);
-        goblim.aprenderHabilidade(habilidadeComum);
 
         j1.equiparHabilidade(habilidadeComum.getNome());
         dragao.equiparHabilidade(habilidadeComum.getNome());
-        goblim.equiparHabilidade(habilidadeComum.getNome());
 
+        //-------------------//
 
+        Batalha batalha = new Batalha();
+        IAinimiga iAinimiga = new IAinimiga();
 
+        RelatorioBatalha relatorioBatalha = iAinimiga.agir(batalha, goblim, j1);
+        RelatorioBatalha relatorioBatalha1 = iAinimiga.agir(batalha, goblim, j1);
 
+        System.out.println("Força"+goblim.getForca());
+        System.out.println("Dano habildiade: "+goblim.getHabilidadesEquipadas().get(0).getDano());
+        System.out.println("Pdoer Magico: "+goblim.getPoderMagico());
+        System.out.println("Inteligencia: "+goblim.getInteligencia());
 
-        System.out.println(itemsDragao);
-
+        Printer.printRelatorioBatalha(relatorioBatalha);
+        Printer.printRelatorioBatalha(relatorioBatalha1);
 
 
 

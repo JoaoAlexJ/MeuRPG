@@ -7,7 +7,7 @@ public enum Classe {
         public void bonusClasse(Entidade entidade) {
 
             entidade.setPoderMagico(entidade.getPoderMagico() + 15);
-            entidade.setInteligencia(entidade.getInteligencia() + 10);
+            entidade.setInteligencia(entidade.getInteligencia() + 8);
 
             entidade.setManaMaxima(entidade.getManaMaxima() + 100);
             entidade.setManaAtual(entidade.getManaAtual() + 100);
@@ -19,7 +19,7 @@ public enum Classe {
         @Override
         public void bonusClasse(Entidade entidade) {
 
-            entidade.setArmadura(entidade.getArmadura() + 10);
+            entidade.setArmadura(entidade.getArmadura() + 7);
 
             entidade.setVidaMaxima(entidade.getVidaMaxima() + 100);
             entidade.setVidaAtual(entidade.getVidaAtual() + 100);
@@ -33,9 +33,9 @@ public enum Classe {
         @Override
         public void bonusClasse(Entidade entidade) {
 
-            entidade.setVelocidade(entidade.getVelocidade() + 15);
+            entidade.setVelocidade(entidade.getVelocidade() + 8);
             entidade.setForca(entidade.getForca() + 15);
-            entidade.setInteligencia(entidade.getInteligencia() + 10 );
+            entidade.setInteligencia(entidade.getInteligencia() + 5 );
 
         }
     },
