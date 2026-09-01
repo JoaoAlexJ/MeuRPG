@@ -3,6 +3,7 @@ import Entidade.Alvos.Criatura;
 import Entidade.Alvos.Monstro;
 import Entidade.Alvos.TipoMonstro;
 import Entidade.Pacificos.Comerciante.Comerciante;
+import Entidade.Pacificos.Comerciante.FluxoDeVenda;
 import Entidade.Pacificos.Comerciante.Transacao;
 import Entidade.Personagem.Classe;
 import Entidade.Personagem.Jogador.Jogador;
@@ -17,6 +18,7 @@ import Habilidade.TipoHabilidade;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
 
@@ -104,39 +106,13 @@ public class Main {
         j1.setDinheiro(1500);
         itemsJogador.forEach(i -> j1.getInventario().adicionarItem(i));
 
-        Printer.printComerciante(c1);
-        Printer.printLinha();
-        Printer.printJogadorBatalha(j1);
-        Printer.printLinha();
-        Printer.printListItems(j1.getInventario().getItems());
-        Printer.printLinha();
 
+
+        Scanner scanner = new Scanner(System.in);
+        FluxoDeVenda fluxoDeVenda = new FluxoDeVenda(c1, j1, scanner);
         //Venda
 
-        //Aqui o jogador vai coprar um item do comerciante
-        //Então ele escolhe o item pelo nome e a raridade
-
-        Item item = null;
-
-        for (Item i : c1.getItems()){
-
-            if (i.getNome().equalsIgnoreCase("Dedos de Bruxa") && i.getRaridade().equals(Raridade.EPICO)){
-                item = i;
-                break;
-            }
-
-        }
-
-        //Agora com o item escolhido começa a trasação
-
-        Transacao.realizar(c1, j1, item);
-
-
-        Printer.printComerciante(c1);
-        Printer.printLinha();
-        Printer.printJogadorBatalha(j1);
-        Printer.printLinha();
-        Printer.printListItems(j1.getInventario().getItems());
+        fluxoDeVenda.iniciar();
 
 
 

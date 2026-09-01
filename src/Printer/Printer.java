@@ -10,6 +10,7 @@ import Item.Item;
 import Relatorio.RelatorioBatalha;
 import Relatorio.RelatorioEfeito;
 
+import java.sql.SQLOutput;
 import java.util.List;
 
 public class  Printer {
@@ -116,7 +117,21 @@ public class  Printer {
 
     public static void printListItems(List<Item> listItems){
 
-        listItems.forEach(i -> System.out.println(i.getNome()+"\n"+i.getPreco()+"\n"+i.getRaridade()+"\n"));
+        for (Item item : listItems){
+            printItem(item);
+
+        }
+
+    }
+
+    public static void printItem(Item item){
+
+        System.out.println("        ITEM");
+        System.out.println();
+        System.out.println("Nome: "+item.getNome());
+        System.out.println("Raridade: "+item.getRaridade());
+        System.out.printf("Preço: %.2f $\n", item.getPreco());
+        printLinha();
     }
 
     public static void printComerciante(Comerciante comerciante){
@@ -126,11 +141,19 @@ public class  Printer {
         System.out.println("Nome: "+comerciante.getNome());
         System.out.println("Raça: "+comerciante.getRaca());
         System.out.println("Dinheiro: "+comerciante.getDinheiro()+" $");
-        System.out.println("========================");
-        System.out.println("       <Itens>");
+        printLinha();
 
         printListItems(comerciante.getItems());
+
     }
 
+    public static void printComercianteSimpes(Comerciante comerciante){
+
+        System.out.println("        COMERCIANTE");
+        System.out.println();
+        System.out.println("Nome: "+comerciante.getNome());
+        System.out.println("Raça: "+comerciante.getRaca());
+
+    }
 
 }
