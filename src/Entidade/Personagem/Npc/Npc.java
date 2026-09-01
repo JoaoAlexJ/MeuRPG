@@ -1,5 +1,8 @@
-package Entidade.Personagem;
+package Entidade.Personagem.Npc;
 
+import Entidade.Personagem.Classe;
+import Entidade.Personagem.Personagem;
+import Entidade.Personagem.Raca;
 import Habilidade.Habilidade;
 
 import java.util.ArrayList;
@@ -10,7 +13,7 @@ public class Npc extends Personagem {
     private List<String> falas;
 
     public Npc(String nome, int nivel, int manaMaxima, int vidaMaxima, int forca, int inteligencia, int poderMagico, int velocidade,
-               int armadura, Raca raca,List<String> falas, Classe classe) {
+               int armadura, Raca raca, List<String> falas, Classe classe) {
         super(nome, nivel, manaMaxima, vidaMaxima, forca, inteligencia, poderMagico, velocidade, armadura, raca, classe);
 
         this.falas = falas;

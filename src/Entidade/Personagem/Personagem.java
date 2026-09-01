@@ -39,6 +39,8 @@ public abstract class Personagem extends Entidade {
     @Override
     public int usarHabilidade(Habilidade habilidade){
 
+        if (!getHabilidadesEquipadas().contains(habilidade))throw new RuntimeException("Essa habilidade não está equipada");
+
         if (getClasse() != null){
 
             return getClasse().calcularDanoHabilidade(habilidade, this);

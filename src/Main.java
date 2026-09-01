@@ -1,20 +1,21 @@
-import Batalha.Batalha;
-import Batalha.IAinimiga;
 import Efeito.Efeito;
 import Entidade.Alvos.Criatura;
 import Entidade.Alvos.Monstro;
 import Entidade.Alvos.TipoMonstro;
+import Entidade.Pacificos.Comerciante.Comerciante;
+import Entidade.Pacificos.Comerciante.Transacao;
 import Entidade.Personagem.Classe;
 import Entidade.Personagem.Jogador.Jogador;
 import Entidade.Personagem.Raca;
 import Habilidade.Habilidade;
 import Item.DropItem;
+import Item.Item;
 import Item.Material;
 import Item.Raridade;
 import Printer.Printer;
 import Habilidade.TipoHabilidade;
-import Relatorio.RelatorioBatalha;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
@@ -61,6 +62,8 @@ public class Main {
 
         //-------------------//
 
+        /*
+
         Batalha batalha = new Batalha();
         IAinimiga iAinimiga = new IAinimiga();
 
@@ -74,10 +77,66 @@ public class Main {
 
         Printer.printRelatorioBatalha(relatorioBatalha);
         Printer.printRelatorioBatalha(relatorioBatalha1);
+        Printer.printLinha();
+         */
+
+        //--------------------//
+
+        //Teste de compra e venda
+
+        //Comerciante
+        List<Item> itemsComerciante = new ArrayList<>(List.of(
+                new Material("Olho de sapo encantado", Raridade.INCOMUM, 250),
+                new Material("Dedos de bruxa", Raridade.EPICO, 120),
+                new Material("Pera", Raridade.COMUM, 25)
+        ));
+
+        Comerciante c1 = new Comerciante("Juninho", itemsComerciante, Raca.HUMANO);
+
+        //Jogador
+        List<Item> itemsJogador = new ArrayList<>(List.of(
+                new Material("Escudo de prata", Raridade.RARO, 25),
+                new Material("Punhal enferrujado", Raridade.COMUM, 50),
+                new Material("Cerejas", Raridade.COMUM, 10)
+
+        ));
+
+        j1.setDinheiro(1500);
+        itemsJogador.forEach(i -> j1.getInventario().adicionarItem(i));
+
+        Printer.printComerciante(c1);
+        Printer.printLinha();
+        Printer.printJogadorBatalha(j1);
+        Printer.printLinha();
+        Printer.printListItems(j1.getInventario().getItems());
+        Printer.printLinha();
+
+        //Venda
+
+        //Aqui o jogador vai coprar um item do comerciante
+        //Então ele escolhe o item pelo nome e a raridade
+
+        Item item = null;
+
+        for (Item i : c1.getItems()){
+
+            if (i.getNome().equalsIgnoreCase("Dedos de Bruxa") && i.getRaridade().equals(Raridade.EPICO)){
+                item = i;
+                break;
+            }
+
+        }
+
+        //Agora com o item escolhido começa a trasação
+
+        Transacao.realizar(c1, j1, item);
 
 
-
-
+        Printer.printComerciante(c1);
+        Printer.printLinha();
+        Printer.printJogadorBatalha(j1);
+        Printer.printLinha();
+        Printer.printListItems(j1.getInventario().getItems());
 
 
 

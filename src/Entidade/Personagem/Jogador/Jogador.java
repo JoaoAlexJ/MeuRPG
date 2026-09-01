@@ -1,14 +1,14 @@
 package Entidade.Personagem.Jogador;
 
-import Entidade.Pacificos.Comerciante;
+import Entidade.Pacificos.Comerciante.Comprador;
 import Entidade.Personagem.Personagem;
 import Entidade.Personagem.Classe;
 import Entidade.Personagem.Raca;
-import Entidade.Vendedor;
+import Entidade.Pacificos.Comerciante.Vendedor;
 import Habilidade.Habilidade;
 import Item.Item;
 
-public class Jogador extends Personagem implements Vendedor {
+public class Jogador extends Personagem implements Vendedor, Comprador {
 
     private int xp;
     private Inventario inventario;
@@ -71,34 +71,38 @@ public class Jogador extends Personagem implements Vendedor {
     }
 
     //-----------------//
+    @Override
+    public void comprar(Item item, double valor) {
+
+        if (valor != item.getPreco())throw new IllegalArgumentException("Valor inválido para o item");
+
+        pagar(valor);
+        this.inventario.adicionarItem(item);
+    }
+
 
     @Override
-    public Item vender(Item item, double valor){
+    public Item vender(Item item, double valor) {
+        if (!this.inventario.getItems().contains(item))throw new IllegalArgumentException("Você não possui esse item");
 
-        if (inventario.getItems().contains(item) && valor == item.getPreco()){
+        if (valor != item.getPreco())throw new IllegalArgumentException("Valor inválido para o item");
 
-            inventario.removerItem(item);
-            setDinheiro(getDinheiro() + valor);
-            return item;
-        }
-
-        System.err.println("Erro na venda");
-        return null;
+        receberDinheiro(valor);
+        this.inventario.removerItem(item);
+        return item;
     }
 
-    public void comprarItem(Comerciante comerciante, Item item){
+    @Override
+    public void receberDinheiro(double valor){
+        if (valor < 0)throw new IllegalArgumentException("Valor inválido");
 
-        if (getDinheiro() >= item.getPreco()){
-
-            inventario.adicionarItem(comerciante.vender(item, gastarDinheiro(item.getPreco())));
-
-        }
-
+        setDinheiro(getDinheiro() + valor);
     }
 
-    public double gastarDinheiro(double valor){
+
+    public double pagar(double valor){
         if (valor > getDinheiro())throw new IllegalArgumentException("saldo insuficiente");
-        if (valor <= getDinheiro())throw new IllegalArgumentException("Valor inválido");
+        if (valor <= 0)throw new IllegalArgumentException("Valor inválido");
 
         setDinheiro(getDinheiro() - valor);
         return valor;

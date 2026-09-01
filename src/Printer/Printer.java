@@ -3,10 +3,14 @@ package Printer;
 import Entidade.Alvos.Criatura;
 import Entidade.Alvos.Monstro;
 import Entidade.Entidade;
-import Entidade.Personagem.Npc;
+import Entidade.Pacificos.Comerciante.Comerciante;
+import Entidade.Personagem.Npc.Npc;
 import Entidade.Personagem.Jogador.Jogador;
+import Item.Item;
 import Relatorio.RelatorioBatalha;
 import Relatorio.RelatorioEfeito;
+
+import java.util.List;
 
 public class  Printer {
 
@@ -100,6 +104,7 @@ public class  Printer {
 
     public static void printJogadorBatalha(Jogador jogador){
 
+        System.out.println("<Dinheiro: "+jogador.getDinheiro()+" $");
         System.out.println("<Nível "+jogador.getNivel()+"> "+jogador.getNome());
         System.out.println("Raça: "+jogador.getRaca());
         System.out.println("Classe: " + jogador.getClasse());
@@ -107,6 +112,24 @@ public class  Printer {
         System.out.println("Vida: ("+jogador.getVidaAtual()+"/"+jogador.getVidaMaxima()+")");
         System.out.println("Mana: ("+jogador.getManaAtual()+"/"+jogador.getManaMaxima()+")");
         System.out.println("XP: "+jogador.getXp()+"/"+jogador.getNivel() * 110+")");
+    }
+
+    public static void printListItems(List<Item> listItems){
+
+        listItems.forEach(i -> System.out.println(i.getNome()+"\n"+i.getPreco()+"\n"+i.getRaridade()+"\n"));
+    }
+
+    public static void printComerciante(Comerciante comerciante){
+
+        System.out.println("        COMERCIANTE");
+        System.out.println();
+        System.out.println("Nome: "+comerciante.getNome());
+        System.out.println("Raça: "+comerciante.getRaca());
+        System.out.println("Dinheiro: "+comerciante.getDinheiro()+" $");
+        System.out.println("========================");
+        System.out.println("       <Itens>");
+
+        printListItems(comerciante.getItems());
     }
 
 
