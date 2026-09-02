@@ -6,6 +6,7 @@ import Entidade.Entidade;
 import Entidade.Pacificos.Comerciante.Comerciante;
 import Entidade.Personagem.Npc.Npc;
 import Entidade.Personagem.Jogador.Jogador;
+import Habilidade.Habilidade;
 import Item.Item;
 import Relatorio.RelatorioBatalha;
 import Relatorio.RelatorioEfeito;
@@ -130,6 +131,30 @@ public class  Printer {
         System.out.println("       <Itens>");
 
         printListItems(comerciante.getItems());
+    }
+
+    public static void printHabilidadeEquipada(Habilidade habilidade){
+
+        System.out.println("         HABILIDADE");
+        System.out.println();
+        System.out.println("Nome: "+habilidade.getNome());
+        System.out.println("Dano: "+habilidade.getDano());
+        System.out.println("Custo de mana: "+habilidade.getCustoMana());
+        System.out.println("Raridade: "+habilidade.getRaridade());
+        System.out.println("Efeito: "+habilidade.getEfeito());
+    }
+
+    public static void printHabilidade(Habilidade habilidade){
+
+        printHabilidadeEquipada(habilidade);
+
+        if (habilidade.getRequisitoClasse() != null){
+            System.out.println("Requisito Classe: "+habilidade.getRequisitoClasse());
+        }
+        if (habilidade.getRequisitoMonstro() != null){
+            System.out.println("Requisito Monstro: "+habilidade.getRequisitoMonstro());
+        }
+
     }
 
 

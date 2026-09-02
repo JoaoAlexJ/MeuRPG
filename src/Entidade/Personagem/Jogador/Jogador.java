@@ -8,6 +8,9 @@ import Entidade.Pacificos.Comerciante.Vendedor;
 import Habilidade.Habilidade;
 import Item.Item;
 
+import java.io.LineNumberInputStream;
+import java.util.List;
+
 public class Jogador extends Personagem implements Vendedor, Comprador {
 
     private int xp;
@@ -62,6 +65,16 @@ public class Jogador extends Personagem implements Vendedor, Comprador {
         }
     }
 
+    public void receberRecompensa(int xp, double dinheiro, List<Item> itemList){
+
+        if (xp <= 0)throw new IllegalArgumentException("XP inválido");
+        if (dinheiro <= 0 )throw new IllegalArgumentException("Valor em dinheiro inválido");
+
+        receberXP(xp);
+        receberDinheiro(dinheiro);
+        inventario.adicionarListItems(itemList);
+    }
+
     public Inventario getInventario() {
         return inventario;
     }
@@ -70,7 +83,7 @@ public class Jogador extends Personagem implements Vendedor, Comprador {
         return xp;
     }
 
-    //-----------------//
+    //--------- Compra e venda --------//
     @Override
     public void comprar(Item item, double valor) {
 
@@ -108,6 +121,8 @@ public class Jogador extends Personagem implements Vendedor, Comprador {
         return valor;
 
     }
+
+    //-----------------------//
 
     @Override
     public boolean podeAddHabilidade(Habilidade habilidade) {
