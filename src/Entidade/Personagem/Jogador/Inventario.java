@@ -13,6 +13,15 @@ public class Inventario {
         this.items = new ArrayList<>();
     }
 
+    public void adicionarListItems(List<Item> itemsAdd){
+
+        if (itemsAdd.isEmpty())throw new IllegalArgumentException("Lista vazia");
+
+        for (Item item : itemsAdd){
+            adicionarItem(item);
+        }
+    }
+
     public void adicionarItem(Item item){
 
         if (item == null)throw new IllegalArgumentException("Item inválido");

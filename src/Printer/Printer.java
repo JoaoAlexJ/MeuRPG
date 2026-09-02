@@ -6,11 +6,11 @@ import Entidade.Entidade;
 import Entidade.Pacificos.Comerciante.Comerciante;
 import Entidade.Personagem.Npc.Npc;
 import Entidade.Personagem.Jogador.Jogador;
+import Habilidade.Habilidade;
 import Item.Item;
 import Relatorio.RelatorioBatalha;
 import Relatorio.RelatorioEfeito;
 
-import java.sql.SQLOutput;
 import java.util.List;
 
 public class  Printer {
@@ -117,21 +117,7 @@ public class  Printer {
 
     public static void printListItems(List<Item> listItems){
 
-        for (Item item : listItems){
-            printItem(item);
-
-        }
-
-    }
-
-    public static void printItem(Item item){
-
-        System.out.println("        ITEM");
-        System.out.println();
-        System.out.println("Nome: "+item.getNome());
-        System.out.println("Raridade: "+item.getRaridade());
-        System.out.printf("Preço: %.2f $\n", item.getPreco());
-        printLinha();
+        listItems.forEach(i -> System.out.println(i.getNome()+"\n"+i.getPreco()+"\n"+i.getRaridade()+"\n"));
     }
 
     public static void printComerciante(Comerciante comerciante){
@@ -141,9 +127,33 @@ public class  Printer {
         System.out.println("Nome: "+comerciante.getNome());
         System.out.println("Raça: "+comerciante.getRaca());
         System.out.println("Dinheiro: "+comerciante.getDinheiro()+" $");
-        printLinha();
+        System.out.println("========================");
+        System.out.println("       <Itens>");
 
         printListItems(comerciante.getItems());
+    }
+
+    public static void printHabilidadeEquipada(Habilidade habilidade){
+
+        System.out.println("         HABILIDADE");
+        System.out.println();
+        System.out.println("Nome: "+habilidade.getNome());
+        System.out.println("Dano: "+habilidade.getDano());
+        System.out.println("Custo de mana: "+habilidade.getCustoMana());
+        System.out.println("Raridade: "+habilidade.getRaridade());
+        System.out.println("Efeito: "+habilidade.getEfeito());
+    }
+
+    public static void printHabilidade(Habilidade habilidade){
+
+        printHabilidadeEquipada(habilidade);
+
+        if (habilidade.getRequisitoClasse() != null){
+            System.out.println("Requisito Classe: "+habilidade.getRequisitoClasse());
+        }
+        if (habilidade.getRequisitoMonstro() != null){
+            System.out.println("Requisito Monstro: "+habilidade.getRequisitoMonstro());
+        }
 
     }
 
