@@ -1,10 +1,12 @@
+import Batalha.Batalha;
+import Batalha.IAinimiga;
+import Batalha.FluxoBatalha;
 import Efeito.Efeito;
 import Entidade.Alvos.Criatura;
 import Entidade.Alvos.Monstro;
 import Entidade.Alvos.TipoMonstro;
 import Entidade.Pacificos.Comerciante.Comerciante;
 import Entidade.Pacificos.Comerciante.FluxoDeVenda;
-import Entidade.Pacificos.Comerciante.Transacao;
 import Entidade.Personagem.Classe;
 import Entidade.Personagem.Jogador.Jogador;
 import Entidade.Personagem.Raca;
@@ -13,7 +15,6 @@ import Item.DropItem;
 import Item.Item;
 import Item.Material;
 import Item.Raridade;
-import Printer.Printer;
 import Habilidade.TipoHabilidade;
 
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ import java.util.Scanner;
 
 public class Main {
 
-    static void main(String[] args) {
+    static void main(String[] args) throws InterruptedException {
 
         List<DropItem> itemsGoblim = List.of(
                         new DropItem(new Material("Dente de Goblim", Raridade.COMUM, 45), 80),
@@ -107,12 +108,22 @@ public class Main {
         itemsJogador.forEach(i -> j1.getInventario().adicionarItem(i));
 
 
+        Batalha batalha = new Batalha();
+
 
         Scanner scanner = new Scanner(System.in);
         FluxoDeVenda fluxoDeVenda = new FluxoDeVenda(c1, j1, scanner);
-        //Venda
+        FluxoBatalha fluxoBatalha = new FluxoBatalha(batalha, scanner);
+        IAinimiga iAinimiga = new IAinimiga();
 
-        fluxoDeVenda.iniciar();
+        //------- Venda ----
+        //fluxoDeVenda.iniciar();
+
+        fluxoBatalha.iniciar(j1, goblim, iAinimiga);
+
+        System.out.println("Terminou boy");
+
+
 
 
 

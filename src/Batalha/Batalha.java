@@ -14,7 +14,7 @@ public class Batalha {
             throw new RuntimeException("As duas entidades precisam estar vivas para batalhar");
         }
 
-        List<RelatorioEfeito> efeitos = alvo.aplicarEfeitos();
+        List<RelatorioEfeito> efeitos = atacante.aplicarEfeitos();
 
         int danoFinal = alvo.receberDano(atacante.atacar());
 
@@ -30,7 +30,7 @@ public class Batalha {
             throw new RuntimeException("As duas entidades precisam estar vivas para batalhar");
         }
 
-        List<RelatorioEfeito> efeitos = alvo.aplicarEfeitos();
+        List<RelatorioEfeito> efeitos = atacante.aplicarEfeitos();
 
         int danoFinal = alvo.receberDano(atacante.usarHabilidade(habilidade));
 
