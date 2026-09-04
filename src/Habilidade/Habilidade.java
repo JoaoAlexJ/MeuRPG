@@ -3,9 +3,10 @@ package Habilidade;
 import Efeito.Efeito;
 import Entidade.Alvos.TipoMonstro;
 import Entidade.Personagem.Classe;
+import Item.BonusRaridade;
 import Item.Raridade;
 
-public class Habilidade {
+public class Habilidade implements BonusRaridade {
 
     private String nome;
     private int dano;
@@ -28,6 +29,8 @@ public class Habilidade {
         this.tipoHabilidade = tipoHabilidade;
         this.efeito = efeito;
 
+        aplicarBonusRaridade();
+
     }
 
     public Habilidade(String nome, int dano, int custoMana, Raridade raridade, TipoHabilidade tipoHabilidade, Efeito efeito, Classe requisitoClasse ) {
@@ -38,6 +41,8 @@ public class Habilidade {
         this.requisitoClasse = requisitoClasse;
         this.tipoHabilidade = tipoHabilidade;
         this.efeito = efeito;
+
+        aplicarBonusRaridade();
     }
 
     public Habilidade(String nome, int dano, int custoMana, Raridade raridade, TipoHabilidade tipoHabilidade, Efeito efeito) {
@@ -48,6 +53,8 @@ public class Habilidade {
         this.raridade = raridade;
         this.tipoHabilidade = tipoHabilidade;
         this.efeito = efeito;
+
+        aplicarBonusRaridade();
     }
 
 
@@ -83,5 +90,11 @@ public class Habilidade {
 
     public Efeito getEfeito() {
         return efeito;
+    }
+
+    @Override
+    public void aplicarBonusRaridade() {
+
+        this.dano += this.raridade.getBuff();
     }
 }

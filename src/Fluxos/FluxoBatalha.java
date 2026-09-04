@@ -1,7 +1,8 @@
-package Batalha;
+package Fluxos;
 
+import Batalha.Batalha;
+import Batalha.IAinimiga;
 import Entidade.Alvos.Alvos;
-import Entidade.Entidade;
 import Entidade.Personagem.Jogador.Jogador;
 import Habilidade.Habilidade;
 import Printer.Printer;

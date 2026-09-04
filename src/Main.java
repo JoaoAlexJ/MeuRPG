@@ -1,12 +1,12 @@
 import Batalha.Batalha;
 import Batalha.IAinimiga;
-import Batalha.FluxoBatalha;
+import Fluxos.FluxoBatalha;
 import Efeito.Efeito;
 import Entidade.Alvos.Criatura;
 import Entidade.Alvos.Monstro;
 import Entidade.Alvos.TipoMonstro;
 import Entidade.Pacificos.Comerciante.Comerciante;
-import Entidade.Pacificos.Comerciante.FluxoDeVenda;
+import Fluxos.FluxoDeVenda;
 import Entidade.Personagem.Classe;
 import Entidade.Personagem.Jogador.Jogador;
 import Entidade.Personagem.Raca;

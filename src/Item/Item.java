@@ -1,16 +1,31 @@
 package Item;
 
+import Efeito.Efeito;
+
 public abstract class Item {
 
     private String nome;
     private Raridade raridade;
     private double preco;
+    private Efeito efeito;
 
-    public Item(String nome, Raridade raridade, int preco) {
+
+    public Item(String nome, Raridade raridade, int preco, Efeito efeito) {
+        this.nome = nome;
+        this.raridade = raridade;
+        this.preco = preco;
+        this.efeito = efeito;
+    }
+
+    public Item(String nome, Raridade raridade, double preco) {
         this.nome = nome;
         this.raridade = raridade;
         this.preco = preco;
     }
+
+
+    //-----------------------//
+
 
     public String getNome() {
         return nome;
@@ -22,6 +37,10 @@ public abstract class Item {
 
     public double getPreco() {
         return preco;
+    }
+
+    public Efeito getEfeito() {
+        return efeito;
     }
 
     //--------------------//

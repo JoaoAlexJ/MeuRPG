@@ -1,12 +1,20 @@
 package Entidade.Personagem.Jogador;
 
 import Item.Item;
+import Item.SlotArma;
+import Item.SlotAcessorio;
+import Item.SlotArmadura;
+import Item.Arma;
 
 import java.util.ArrayList;
+import java.util.EnumMap;
 import java.util.List;
 
 public class Inventario {
 
+    private EnumMap<SlotArma, Arma> arma;
+    private EnumMap<SlotArmadura, Arma> armadura;
+    private EnumMap<SlotAcessorio, Arma> acessorios;
     private List<Item> items;
 
     public Inventario() {

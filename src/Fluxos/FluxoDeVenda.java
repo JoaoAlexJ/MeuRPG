@@ -1,12 +1,12 @@
-package Entidade.Pacificos.Comerciante;
+package Fluxos;
 
+import Entidade.Pacificos.Comerciante.Comerciante;
+import Entidade.Pacificos.Comerciante.Transacao;
 import Entidade.Personagem.Jogador.Jogador;
 import Item.Item;
 import Item.Raridade;
 import Printer.Printer;
-import jdk.dynalink.linker.LinkerServices;
 
-import javax.lang.model.type.MirroredTypeException;
 import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
